@@ -4,12 +4,7 @@
       <h2 class="header__top-title">Breathe Application</h2>
     </div>
     <button class="header__btn animate__fadeIn" @click="switchState" v-if="!running">Start breathing</button>
-    <button
-      class="header__btn animate__heartBeat"
-      @click="switchState"
-      v-else
-      style="display: none;"
-    >I'm already relaxed..</button>
+    <button class="header__btn animate__heartBeat" @click="reload" v-else>I'm already relaxed..</button>
   </div>
 </template>
 
@@ -20,6 +15,9 @@ export default {
     switchState() {
       const breatheState = !this.running;
       this.$emit("stateChanged", breatheState);
+    },
+    reload() {
+        document.location.reload(true);
     }
   }
 };
